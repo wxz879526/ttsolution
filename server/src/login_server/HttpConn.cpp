@@ -184,7 +184,7 @@ void CHttpConn::OnRead()
         return;
     }
 
-	//log("OnRead, buf_len=%u, conn_handle=%u\n", buf_len, m_conn_handle); // for debug
+	log("OnRead, buf_len=%u, conn_handle=%u\n", buf_len, m_conn_handle); // for debug
 
 	
 	m_cHttpParser.ParseHttpContent(in_buf, buf_len);

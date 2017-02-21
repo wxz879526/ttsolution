@@ -17,6 +17,7 @@ string strMsfsUrl;
 string strDiscovery;//发现获取地址
 void client_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pParam)
 {
+	log("client_callback");
 	if (msg == NETLIB_MSG_CONNECT)
 	{
 		CLoginConn* pConn = new CLoginConn();
@@ -49,6 +50,7 @@ void http_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pPar
 {
     if (msg == NETLIB_MSG_CONNECT)
     {
+		log("http_callback");
         CHttpConn* pConn = new CHttpConn();
         pConn->OnConnect(handle);
     }
@@ -98,6 +100,7 @@ int main(int argc, char* argv[])
 
 	if (ret == NETLIB_ERROR)
 		return ret;
+
 	CStrExplode client_listen_ip_list(client_listen_ip, ';');
 	for (uint32_t i = 0; i < client_listen_ip_list.GetItemCnt(); i++) {
 		ret = netlib_listen(client_listen_ip_list.GetItem(i), client_port, client_callback, NULL);
@@ -118,10 +121,10 @@ int main(int argc, char* argv[])
         if (ret == NETLIB_ERROR)
             return ret;
     }
-    
 
-			printf("server start listen on:\nFor client %s:%d\nFor MsgServer: %s:%d\nFor http:%s:%d\n",
+	printf("server start listen on:\nFor client %s:%d\nFor MsgServer: %s:%d\nFor http:%s:%d\n",
 			client_listen_ip, client_port, msg_server_listen_ip, msg_server_port, http_listen_ip, http_port);
+
 	init_login_conn();
     init_http_conn();
 
