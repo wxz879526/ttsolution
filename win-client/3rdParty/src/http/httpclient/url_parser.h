@@ -16,7 +16,7 @@ NAMESPACE_BEGIN(Http)
 class URLParser
 {
 public:
-	URLParser(const std::string&	url);
+	URLParser(const std::string& url);
 public:
 	const	std::string&	getDomain()	const	{	return	_domain;}
 	const	std::string&	getObject()	const	{	return	_object;}

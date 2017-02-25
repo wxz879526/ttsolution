@@ -27,9 +27,9 @@ void DoLoginServerHttpOperation::processOpertion()
 	
 	DoLoginServerParam* pPamram = new DoLoginServerParam();
 	pPamram->resMsg = util::getMultilingual()->getStringById(_T("STRID_LOGINDIALOG_LOGIN_HTTP_DEFERROR"));
-	Http::HttpResponse	response;
-	Http::HttpClient	client;
-	Http::HttpRequest	request("get", url);
+	Http::HttpResponse response;
+	Http::HttpClient client;
+	Http::HttpRequest request("get", url);
 	if (!client.execute(&request, &response))
 	{
 		CString csTemp = util::stringToCString(url);

@@ -19,7 +19,7 @@ _object(url)
 	parseURL(url);
 }
 
-void	URLParser::parseURL(const std::string &url)
+void URLParser::parseURL(const std::string &url)
 {
 	size_t	length	=	url.length();
 	if (length	<	7)	//过短的URL可以认为是无效的
@@ -39,7 +39,7 @@ void	URLParser::parseURL(const std::string &url)
 	}
 }
 
-void	URLParser::splitURL(const std::string& format_url)
+void URLParser::splitURL(const std::string& format_url)
 {
 	size_t	index	=	format_url.find('/');
 	size_t	length	=	format_url.length();
