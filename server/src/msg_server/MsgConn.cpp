@@ -406,15 +406,15 @@ void CMsgConn::_HandleLoginRequest(CImPdu* pPdu)
     CDBServConn* pDbConn = get_db_serv_conn_for_login();
     if (!pDbConn) {
         result = IM::BaseDefine::REFUSE_REASON_NO_DB_SERVER;
-        result_string = "服务端异常";
+        result_string = "DB服务端异常";
 	}
     else if (!is_login_server_available()) {
         result = IM::BaseDefine::REFUSE_REASON_NO_LOGIN_SERVER;
-        result_string = "服务端异常";
+        result_string = "Login服务端异常";
 	}
     else if (!is_route_server_available()) {
         result = IM::BaseDefine::REFUSE_REASON_NO_ROUTE_SERVER;
-        result_string = "服务端异常";
+        result_string = "Route服务端异常";
     
 }
     if (result) {
@@ -431,6 +431,7 @@ void CMsgConn::_HandleLoginRequest(CImPdu* pPdu)
         Close();
         return;
     }
+
     IM::Login::IMLoginReq msg;
     CHECK_PB_PARSE_MSG(msg.ParseFromArray(pPdu->GetBodyData(), pPdu->GetBodyLength()));
     //假如是汉字，则转成拼音
